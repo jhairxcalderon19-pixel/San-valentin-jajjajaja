@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para ti ❤️</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffdde1; /* Color de fondo rosita */
+            font-family: 'Arial', sans-serif;
+            flex-direction: column;
+            text-align: center;
+            overflow: hidden; /* Para que no salgan barras de desplazamiento */
+            position: relative; /* Necesario para posicionar el texto escondido */
+        }
+ 
+        h1 {
+            color: #d63384;
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+ 
+        .img-container img {
+            width: 200px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+ 
+        .botones {
+            display: center;
+            gap: 20px;
+        }
+ 
+        button {
+            padding: 15px 30px;
+            font-size: 1.5rem;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.2s;
+            font-weight: bold;
+        }
+ 
+        #btnSi {
+            background-color: #28a745;
+            color: white;
+            box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4);
+        }
+ 
+        #btnSi:hover {
+            transform: scale(1.1);
+        }
+ 
+        #btnNo {
+            background-color: #dc3545;
+            color: white;
+            position: relative; /* Importante para que se mueva */
+        }
+ 
+        /* Clase para el mensaje final */
+        .oculto {
+            display: none;
+        }
+ 
+        /* Estilo para el texto escondido */
+        .letra-pequena {
+            position: absolute;
+            bottom: 20px;
+            font-size: 1rem;
+            color: #d63384;
+            opacity: 0.6; /* Un poco transparente para que se vea sutil */
+            font-style: italic;
+            pointer-events: none; /* Para que no moleste al hacer clic */
+        }
+    </style>
+</head>
+<body>
+ 
+    <div id="pantalla-pregunta">
+        <div class="img-container">
+            <img src="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExN2dtNnNlMDZ2M3NrNmdxNWgyaWZ6eTJvZnMxcmN5N2FmdWhoNWE4bCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/y93x7gLXTO5dnSWCEI/giphy.gif" alt="Please">
+        </div>
+        <h1>Quieres ser mi san valentin?</h1>
+        <div class="botones">
+            <button id="btnSi" onclick="aceptar()">¡SÍ, OBVIO!</button>
+            <button id="btnNo" onmouseover="moverBoton()" onclick="moverBoton()">NO</button>
+        </div>
+    </div>
+ 
+    <div id="pantalla-final" class="oculto">
+        <div class="img-container">
+            <img src="https://media.giphy.com/media/TdfyKrN7HGTIY/giphy.gif" alt="Celebracion">
+        </div>
+        <h1>GRACIAS POR SER TAN SINCERA ❤️</h1>
+    </div>
+ 
+    <div class="letra-pequena">
+        ⚠️ Test claramente no manipulado (100% origen cientifico) ⚠️
+    </div>
+ 
+    <script>
+        function moverBoton() {
+            const btnNo = document.getElementById('btnNo');
+            // Ancho y alto de la ventana
+            const anchoVentana = window.innerWidth;
+            const altoVentana = window.innerHeight;
+ 
+            // Generar posiciones aleatorias
+            const nuevoX = Math.random() * (anchoVentana - 150); // Restamos el tamaño del botón aprox
+            const nuevoY = Math.random() * (altoVentana - 150);
+ 
+            // Aplicar las nuevas posiciones
+            btnNo.style.position = 'absolute';
+            btnNo.style.left = nuevoX + 'px';
+            btnNo.style.top = nuevoY + 'px';
+        }
+ 
+        function aceptar() {
+            document.getElementById('pantalla-pregunta').style.display = 'none';
+            document.getElementById('pantalla-final').style.display = 'flex';
+            document.getElementById('pantalla-final').classList.remove('oculto');
+        }
+    </script>
+</body>
+</html>
